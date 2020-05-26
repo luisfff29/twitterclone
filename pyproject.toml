@@ -8,6 +8,7 @@ authors = ["luisfff29 <luisfff29@gmail.com>"]
 python = "^3.8"
 django = "^3.0.6"
 autopep8 = "^1.5.2"
+flake8 = "^3.8.2"
 
 [tool.poetry.dev-dependencies]
 
