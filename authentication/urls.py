@@ -3,6 +3,6 @@ from authentication import views
 
 
 urlpatterns = [
-    path('login/', views.loginview),
-    path('signup/', views.signupview),
+    path('login/', views.loginview, name='login'),
+    path('signup/', views.signupview, name='signup'),
 ]
