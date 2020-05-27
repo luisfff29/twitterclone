@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
-{% block body_block %}
+{% extends 'authentication/auth_base.html' %}
+{% block auth_block %}
 <h1>Sign up</h1>
 <form method='POST'>
   {% csrf_token %}
