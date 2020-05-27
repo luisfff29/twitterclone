@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='homepage'),
     path('', include('authentication.urls')),
+    path('compose/', include('tweet.urls')),
 ]
