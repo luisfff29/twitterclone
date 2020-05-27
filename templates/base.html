@@ -17,9 +17,33 @@
   </nav>
 
   <body>
-    {% block body_block %}
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class='card border bg-light'>
+            <div class="card-body">
+              <h5 class="card-title">
+                {% if user.get_full_name %}
+                {{ user.get_full_name }}
+                {% else %}
+                {{ user.username }}
+                {% endif %}
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">@{{ user.username }}</h6>
+              <hr>
+              <p class="card-text">Tweets: 0</p>
+              <p class="card-text">Following: 0</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          {% block body_block %}
 
-    {% endblock %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
   </body>
 
 </html>
