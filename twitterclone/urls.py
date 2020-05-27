@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index, name='homepage'),
     path('', include('authentication.urls')),
     path('compose/', include('tweet.urls')),
+    path('profile/', include('twitteruser.urls')),
 ]
