@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication</title>
-  </head>
-
-  <body>
-    <h1>Sign up</h1>
-    <form method='POST'>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Sign In">
-    </form>
-  </body>
-
-</html>
+{% extends 'base.html' %}
+{% block body_block %}
+<h1>Sign up</h1>
+<form method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Sign Up">
+</form>
+{% endblock  %}
