@@ -2,4 +2,15 @@
 {% extends 'base.html' %}
 {% block body_block %}
 <h1>Twitter Home Page</h1>
+{% for tweet in data %}
+<div class="list-group">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1">{{ tweet.user }}</h4>
+      <small>{{ tweet.date }}</small>
+    </div>
+    <p class="mb-1">>> {{ tweet.body }}</p>
+  </div>
+</div>
+{% endfor %}
 {% endblock  %}

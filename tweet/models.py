@@ -10,4 +10,4 @@ class TweetMessage(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.user
+        return self.user.username
