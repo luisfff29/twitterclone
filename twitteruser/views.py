@@ -15,7 +15,6 @@ def index(request):
     return render(request, 'twitteruser/index.html', {
         'tweets': tweets,
         'num_tweets': mytweets,
-        'num_follow': followed.count()
     })
 
 
@@ -26,13 +25,11 @@ def profile(request, name):
     current_user = CustomUser.objects.get(username=request.user.username)
     boolean = usuario in current_user.following.all()
     num_tweets = tweets.count()
-    num_follow = usuario.following.count()
     return render(request, 'twitteruser/profile.html', {
         'tweets': tweets,
         'profile_user': usuario,
         'boolean': boolean,
         'num_tweets': num_tweets,
-        'num_follow': num_follow
     })
 
 

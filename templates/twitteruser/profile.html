@@ -11,7 +11,7 @@
 <h6 class="card-subtitle mb-2 text-muted">@{{ profile_user.username }}</h6>
 <hr>
 <p class="card-text">Tweets: {{ num_tweets }}</p>
-<p class="card-text">Following: {{ num_follow }}</p>
+<p class="card-text">Following: {{ profile_user.following.count }}</p>
 {% if user.username != profile_user.username %}
 {% if boolean %}
 <a href="{% url 'unfollow' profile_user.username %}" class='btn btn-danger'>Unfollow -</a>

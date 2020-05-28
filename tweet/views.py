@@ -19,5 +19,7 @@ def tweetview(request):
             )
         return HttpResponseRedirect(reverse('homepage'))
 
+    num_tweets = TweetMessage.objects.filter(
+        user=CustomUser.objects.get(username=request.user.username)).count()
     form = TweetForm()
-    return render(request, 'tweet/tweet.html', {'form': form})
+    return render(request, 'tweet/tweet.html', {'form': form, 'num_tweets': num_tweets})

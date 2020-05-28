@@ -33,7 +33,7 @@
               <h6 class="card-subtitle mb-2 text-muted">@{{ user.username }}</h6>
               <hr>
               <p class="card-text">Tweets: {{ num_tweets }}</p>
-              <p class="card-text">Following: {{ num_follow }}</p>
+              <p class="card-text">Following: {{ user.following.count }}</p>
               {% endblock %}
             </div>
           </div>
