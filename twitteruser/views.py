@@ -8,11 +8,12 @@ from twitteruser.models import CustomUser
 @login_required
 def index(request):
     tweets = TweetMessage.objects.all().order_by('-date')
-    return render(request, 'twitteruser/index.html', {'tweets': tweets})
+    profile_path = '/profile/' + request.user.username
+    return render(request, 'twitteruser/index.html', {'tweets': tweets, 'profile_path': profile_path})
 
 
 @login_required
 def profile(request, name):
-    person = CustomUser.objects.get(username=name)
-    tweets = TweetMessage.objects.filter(user=person).order_by('-date')
-    return render(request, 'twitteruser/profile.html', {'tweets': tweets})
+    user = CustomUser.objects.get(username=name)
+    tweets = TweetMessage.objects.filter(user=user).order_by('-date')
+    return render(request, 'twitteruser/profile.html', {'tweets': tweets, 'profile_name': name})

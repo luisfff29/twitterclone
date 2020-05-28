@@ -33,6 +33,8 @@
               <hr>
               <p class="card-text">Tweets: 0</p>
               <p class="card-text">Following: 0</p>
+              {% block follow_button %}
+              {% endblock %}
             </div>
           </div>
           <a href="{% url 'logout' %}" class='btn btn-danger'>Log out</a>

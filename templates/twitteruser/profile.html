@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% block follow_button %}
+{% if user.username != profile_name %}
+<a href="#" class='btn btn-primary'>Follow +</a>
+{% endif %}
+{% endblock %}
 {% block body_block %}
-<h1>Twitter Home Page</h1>
+<h1>Profile: {{ profile_user }}</h1>
 {% for tweet in tweets %}
 <div class="list-group">
   <div class="list-group-item list-group-item-action">
