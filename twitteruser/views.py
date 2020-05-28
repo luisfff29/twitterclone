@@ -10,7 +10,8 @@ from django.http import HttpResponseRedirect
 def index(request):
     usuario = CustomUser.objects.get(username=request.user.username)
     followed = usuario.following.all()
-    tweets = TweetMessage.objects.filter(user__in=followed).order_by('-date')
+    tweets = TweetMessage.objects.filter(user__in=followed).order_by(
+        '-date') | TweetMessage.objects.filter(user=usuario).order_by('-date')
     mytweets = TweetMessage.objects.filter(user=usuario).count()
     return render(request, 'twitteruser/index.html', {
         'tweets': tweets,

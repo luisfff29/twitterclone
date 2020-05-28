@@ -8,7 +8,9 @@
   {{ profile_user.username }}
   {% endif %}
 </h5>
-<h6 class="card-subtitle mb-2 text-muted">@{{ profile_user.username }}</h6>
+<h6 class="card-subtitle mb-2 text-muted">
+  <a href="{% url 'profile' profile_user.username %}">@{{ profile_user.username }}</a>
+</h6>
 <hr>
 <p class="card-text">Tweets: {{ num_tweets }}</p>
 <p class="card-text">Following: {{ profile_user.following.count }}</p>
@@ -26,11 +28,13 @@
 <div class="list-group">
   <div class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
-      <h4 class="mb-1">{{ tweet.user }}</h4>
+      <h4 class="mb-1"><a href="{% url 'profile' tweet.user.username %}">@{{ tweet.user.username }}</a></h4>
       <small>{{ tweet.date }}</small>
     </div>
     <p class="mb-1">>> {{ tweet.body }}</p>
   </div>
 </div>
+{% empty %}
+<p>It looks like this person hasn't tweeted anything...</p>
 {% endfor %}
 {% endblock  %}

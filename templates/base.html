@@ -30,7 +30,9 @@
                 {{ user.username }}
                 {% endif %}
               </h5>
-              <h6 class="card-subtitle mb-2 text-muted">@{{ user.username }}</h6>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <a href="{% url 'profile' user.username %}">@{{ user.username }}</a>
+              </h6>
               <hr>
               <p class="card-text">Tweets: {{ num_tweets }}</p>
               <p class="card-text">Following: {{ user.following.count }}</p>
