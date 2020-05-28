@@ -8,8 +8,15 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 @login_required
 def index(request):
-    tweets = TweetMessage.objects.all().order_by('-date')
-    return render(request, 'twitteruser/index.html', {'tweets': tweets})
+    usuario = CustomUser.objects.get(username=request.user.username)
+    followed = usuario.following.all()
+    tweets = TweetMessage.objects.filter(user__in=followed).order_by('-date')
+    mytweets = TweetMessage.objects.filter(user=usuario).count()
+    return render(request, 'twitteruser/index.html', {
+        'tweets': tweets,
+        'num_tweets': mytweets,
+        'num_follow': followed.count()
+    })
 
 
 @login_required
