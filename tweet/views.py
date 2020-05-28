@@ -23,3 +23,10 @@ def tweetview(request):
         user=CustomUser.objects.get(username=request.user.username)).count()
     form = TweetForm()
     return render(request, 'tweet/tweet.html', {'form': form, 'num_tweets': num_tweets})
+
+
+def tweetdetail(request, id):
+    tweet = TweetMessage.objects.get(id=id)
+    num_tweets = TweetMessage.objects.filter(
+        user=CustomUser.objects.get(username=request.user.username)).count()
+    return render(request, 'tweet/detail.html', {'tweet': tweet, 'num_tweets': num_tweets})

@@ -3,5 +3,6 @@ from tweet import views
 
 
 urlpatterns = [
-    path('', views.tweetview, name='tweet'),
+    path('compose/', views.tweetview, name='compose'),
+    path('<int:id>/', views.tweetdetail, name='tweet'),
 ]

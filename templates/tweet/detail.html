@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body_block %}
+<h2>Tweet Detail</h2>
+<div class="list-group">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1"><a href="{% url 'profile' tweet.user.username %}">@{{ tweet.user.username }}</a></h4>
+      <small><a href="{% url 'tweet' tweet.id %}">{{ tweet.date }}</a></small>
+    </div>
+    <p class="mb-1">>> {{ tweet.body }}</p>
+  </div>
+</div>
+{% endblock %}
