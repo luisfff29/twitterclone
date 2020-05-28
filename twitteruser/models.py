@@ -4,5 +4,5 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    following = models.ManyToManyField('self')
+    following = models.ManyToManyField('self', symmetrical=False)
     pass

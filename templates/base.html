@@ -22,6 +22,7 @@
         <div class="col-4">
           <div class='card border bg-light'>
             <div class="card-body">
+              {% block follow_button %}
               <h5 class="card-title">
                 {% if user.get_full_name %}
                 {{ user.get_full_name }}
@@ -33,7 +34,6 @@
               <hr>
               <p class="card-text">Tweets: 0</p>
               <p class="card-text">Following: 0</p>
-              {% block follow_button %}
               {% endblock %}
             </div>
           </div>
