@@ -19,12 +19,15 @@ def index(request):
     })
 
 
-@login_required
 def profile(request, name):
     usuario = CustomUser.objects.get(username=name)
     tweets = TweetMessage.objects.filter(user=usuario).order_by('-date')
-    current_user = CustomUser.objects.get(username=request.user.username)
-    boolean = usuario in current_user.following.all()
+    try:
+        current_user = CustomUser.objects.get(username=request.user.username)
+        boolean = usuario in current_user.following.all()
+    except CustomUser.DoesNotExist:
+        boolean = False
+        pass
     num_tweets = tweets.count()
     return render(request, 'twitteruser/profile.html', {
         'tweets': tweets,
@@ -34,6 +37,7 @@ def profile(request, name):
     })
 
 
+@login_required
 def follow(request, name):
     if request.user.username == name:
         return HttpResponseRedirect(reverse('profile', args=(name,)))
@@ -44,6 +48,7 @@ def follow(request, name):
     return HttpResponseRedirect(reverse('profile', args=(name,)))
 
 
+@login_required
 def unfollow(request, name):
     if request.user.username == name:
         return HttpResponseRedirect(reverse('profile', args=(name,)))
