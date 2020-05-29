@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+
+{% block card_body %}
+{% include 'card.html' with person=user show_button=False %}
+{% endblock %}
+
 {% block body_block %}
 <h1>What's happening, {{ user.username }}?</h1>
 {% for tweet in tweets %}

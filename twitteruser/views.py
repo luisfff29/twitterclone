@@ -27,7 +27,6 @@ def profile(request, name):
         boolean = usuario in current_user.following.all()
     except CustomUser.DoesNotExist:
         boolean = False
-        pass
     num_tweets = tweets.count()
     return render(request, 'twitteruser/profile.html', {
         'tweets': tweets,

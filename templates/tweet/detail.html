@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% block card_body %}
+{% include 'card.html' with person=profile_user show_button=True %}
+{% endblock %}
 {% block body_block %}
 <h2>Tweet Detail</h2>
 <div class="list-group">

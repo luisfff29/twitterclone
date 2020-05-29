@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<div class="card-body">
+  <h5 class="card-title">
+    {% if person.get_full_name %}
+    {{ person.get_full_name }}
+    {% else %}
+    {{ person.username }}
+    {% endif %}
+  </h5>
+  <h6 class="card-subtitle mb-2 text-muted">
+    <a href="{% url 'profile' person.username %}">@{{ person.username }}</a>
+  </h6>
+  <hr>
+  <p class="card-text">Tweets: {{ num_tweets }}</p>
+  <p class="card-text">Following: {{ person.following.count }}</p>
+
+  {% if show_button|default:"" %}
+
+  {% if boolean %}
+  <a href="{% url 'unfollow' profile_user.username %}" class='btn btn-danger'>Unfollow -</a>
+  {% else %}
+  <a href="{% url 'follow' profile_user.username %}" class='btn btn-primary'>Follow +</a>
+  {% endif %}
+
+  {% endif %}
+</div>

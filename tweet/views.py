@@ -27,9 +27,10 @@ def tweetview(request):
 
 def tweetdetail(request, id):
     tweet = TweetMessage.objects.get(id=id)
-    try:
-        num_tweets = TweetMessage.objects.filter(
-            user=CustomUser.objects.get(username=request.user.username)).count()
-        return render(request, 'tweet/detail.html', {'tweet': tweet, 'num_tweets': num_tweets})
-    except CustomUser.DoesNotExist:
-        return render(request, 'tweet/detail.html', {'tweet': tweet})
+    num_tweets = TweetMessage.objects.filter(user=tweet.user).count()
+    profile_user = tweet.user
+    return render(request, 'tweet/detail.html', {
+        'tweet': tweet,
+        'num_tweets': num_tweets,
+        'profile_user': profile_user
+    })

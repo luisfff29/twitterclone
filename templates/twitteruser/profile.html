@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
-{% block follow_button %}
-<h5 class="card-title">
-  {% if profile_user.get_full_name %}
-  {{ profile_user.get_full_name }}
-  {% else %}
-  {{ profile_user.username }}
-  {% endif %}
-</h5>
-<h6 class="card-subtitle mb-2 text-muted">
-  <a href="{% url 'profile' profile_user.username %}">@{{ profile_user.username }}</a>
-</h6>
-<hr>
-<p class="card-text">Tweets: {{ num_tweets }}</p>
-<p class="card-text">Following: {{ profile_user.following.count }}</p>
-{% if user.username != profile_user.username %}
-{% if boolean %}
-<a href="{% url 'unfollow' profile_user.username %}" class='btn btn-danger'>Unfollow -</a>
+
+{% block card_body %}
+
+{% if user.is_authenticated and user.username == profile_user.username %}
+{% include 'card.html' with person=profile_user %}
 {% else %}
-<a href="{% url 'follow' profile_user.username %}" class='btn btn-primary'>Follow +</a>
+{% include 'card.html' with person=profile_user show_button=True %}
 {% endif %}
-{% endif %}
+
 {% endblock %}
+
 {% block body_block %}
 <h1>Profile: {{ profile_user }}</h1>
 {% for tweet in tweets %}

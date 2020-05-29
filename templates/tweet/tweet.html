@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+
+{% block card_body %}
+{% include 'card.html' with person=user%}
+{% endblock %}
+
 {% block body_block %}
 <h2>Tell everybody what you're up to!</h2>
 <h2>What's new? What's changed?</h2>
