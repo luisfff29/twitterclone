@@ -1,1 +1,9 @@
-<h1>This is notification</h1>
+{% extends 'base.html' %}
+
+{% block card_block %}
+{% include 'card.html' with person=user %}
+{% endblock %}
+
+{% block body_block %}
+<h1>Notification</h1>
+{% endblock %}
