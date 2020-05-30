@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block card_body %}
+{% block card_block %}
 
 {% if user.is_authenticated and user.username == profile_user.username %}
 {% include 'card.html' with person=profile_user %}

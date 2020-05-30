@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block card_body %}
-{% include 'card.html' with person=user show_button=False %}
+{% block card_block %}
+{% include 'card.html' with person=user %}
 {% endblock %}
 
 {% block body_block %}
