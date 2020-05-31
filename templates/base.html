@@ -13,7 +13,8 @@
   <nav class="nav nav-pills flex-column flex-sm-row pb-4">
     <a class="flex-sm-fill text-sm-center nav-link btn-primary" href="{% url 'homepage' %}">Home</a>
     <a class="flex-sm-fill text-sm-center nav-link btn-success" href="{% url 'compose' %}">Tweet!</a>
-    <a class="flex-sm-fill text-sm-center nav-link btn-warning" href="{% url 'notification' %}">Notifications: 0</a>
+    <a class="flex-sm-fill text-sm-center nav-link btn-warning" href="{% url 'notification' %}">Notifications:
+      {{ num_notif|default:0 }}</a>
     <a class="flex-sm-fill text-sm-center nav-link btn-info" href="{% url 'profile' user.username %}">My Profile</a>
   </nav>
   {% endif %}

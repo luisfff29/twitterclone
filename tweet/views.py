@@ -33,16 +33,25 @@ def tweetview(request):
 
     num_tweets = TweetMessage.objects.filter(
         user=CustomUser.objects.get(username=request.user.username)).count()
+    num_notif = NotificationModel.objects.filter(
+        user=request.user, viewed=False).count()
     form = TweetForm()
-    return render(request, 'tweet/tweet.html', {'form': form, 'num_tweets': num_tweets})
+    return render(request, 'tweet/tweet.html', {
+        'form': form,
+        'num_tweets': num_tweets,
+        'num_notif': num_notif
+    })
 
 
 def tweetdetail(request, id):
     tweet = TweetMessage.objects.get(id=id)
     num_tweets = TweetMessage.objects.filter(user=tweet.user).count()
+    num_notif = NotificationModel.objects.filter(
+        user=request.user, viewed=False).count()
     profile_user = tweet.user
     return render(request, 'tweet/detail.html', {
         'tweet': tweet,
         'num_tweets': num_tweets,
-        'profile_user': profile_user
+        'profile_user': profile_user,
+        'num_notif': num_notif
     })
