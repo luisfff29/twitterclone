@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block body_block %}
-<h1>Notification</h1>
+<h1>Notifications</h1>
+{% for tweet in tweets %}
+<div class="list-group">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1"><a href="{% url 'profile' tweet.tweet.user.username %}">@{{ tweet.tweet.user.username }}</a></h4>
+      <small><a href="{% url 'tweet' tweet.tweet.id %}">{{ tweet.tweet.date }}</a></small>
+    </div>
+    <p class="mb-1">>> {{ tweet.tweet.body }}</p>
+  </div>
+</div>
+{% empty %}
+<p>You don't have any notification in this moment...</p>
+
+{% endfor %}
 {% endblock %}
