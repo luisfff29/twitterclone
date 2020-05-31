@@ -4,6 +4,8 @@ from tweet.models import TweetMessage
 from twitteruser.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from notification.models import NotificationModel
+import re
 
 
 # Create your views here.
@@ -13,10 +15,20 @@ def tweetview(request):
         form = TweetForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            TweetMessage.objects.create(
+            msg = TweetMessage.objects.create(
                 user=CustomUser.objects.get(username=request.user.username),
                 body=data['body'],
             )
+            users = re.findall(r'@\S+', msg.body)
+            if users:
+                for i in users:
+                    try:
+                        if CustomUser.objects.get(username=i[1:]):
+                            NotificationModel.objects.create(
+                                user=CustomUser.objects.get(username=i[1:]), tweet=msg)
+                    except CustomUser.DoesNotExist:
+                        continue
+
         return HttpResponseRedirect(reverse('homepage'))
 
     num_tweets = TweetMessage.objects.filter(
