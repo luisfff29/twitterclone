@@ -33,6 +33,7 @@ def profile(request, name):
             user=request.user, viewed=False).count()
     except CustomUser.DoesNotExist:
         boolean = False
+        num_notif = 0
     num_tweets = tweets.count()
     return render(request, 'twitteruser/profile.html', {
         'tweets': tweets,
