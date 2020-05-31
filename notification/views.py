@@ -8,4 +8,11 @@ from twitteruser.models import CustomUser
 def notificationview(request):
     num_tweets = TweetMessage.objects.filter(
         user=CustomUser.objects.get(username=request.user.username)).count()
-    return render(request, 'notification/notification.html', {'num_tweets': num_tweets})
+    tweets = NotificationModel.objects.filter(user=request.user, viewed=False)
+    for tweet in tweets:
+        tweet.viewed = True
+        tweet.save()
+    return render(request, 'notification/notification.html', {
+        'num_tweets': num_tweets,
+        'tweets': tweets
+    })
