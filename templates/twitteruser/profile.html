@@ -3,7 +3,7 @@
 
 {% block card_block %}
 
-{% if user.is_authenticated and user.username == profile_user.username %}
+{% if user.username == profile_user.username %}
 {% include 'card.html' with person=profile_user %}
 {% else %}
 {% include 'card.html' with person=profile_user show_button=True %}

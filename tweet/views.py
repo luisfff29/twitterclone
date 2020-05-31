@@ -46,16 +46,19 @@ def tweetview(request):
 def tweetdetail(request, id):
     tweet = TweetMessage.objects.get(id=id)
     num_tweets = TweetMessage.objects.filter(user=tweet.user).count()
+    profile_user = tweet.user
     try:
         num_notif = NotificationModel.objects.filter(
             user=request.user, viewed=False).count()
+        following = profile_user in CustomUser.objects.get(
+            username=request.user.username).following.all()
     except TypeError:
         num_notif = 0
-
-    profile_user = tweet.user
+        following = False
 
     return render(request, 'tweet/detail.html', {
         'tweet': tweet,
+        'following': following,
         'num_tweets': num_tweets,
         'profile_user': profile_user,
         'num_notif': num_notif

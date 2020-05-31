@@ -14,13 +14,13 @@
   <p class="card-text">Tweets: {{ num_tweets }}</p>
   <p class="card-text">Following: {{ person.following.count }}</p>
 
-  {% if show_button|default:"" %}
+  {% if not show_button %}
 
-  {% if boolean %}
+  {% elif user.is_authenticated and following %}
   <a href="{% url 'unfollow' profile_user.username %}" class='btn btn-danger'>Unfollow -</a>
-  {% else %}
+  {% elif user.is_authenticated and not following %}
   <a href="{% url 'follow' profile_user.username %}" class='btn btn-primary'>Follow +</a>
-  {% endif %}
-
+  {% elif not user.is_authenticated %}
+  <a href="{% url 'follow' profile_user.username %}" class='btn btn-primary'>Follow +</a>
   {% endif %}
 </div>

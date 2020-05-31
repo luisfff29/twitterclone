@@ -2,7 +2,13 @@
 {% extends 'base.html' %}
 
 {% block card_block %}
+
+{% if user.username == profile_user.username %}
+{% include 'card.html' with person=profile_user %}
+{% else %}
 {% include 'card.html' with person=profile_user show_button=True %}
+{% endif %}
+
 {% endblock %}
 
 {% block body_block %}
