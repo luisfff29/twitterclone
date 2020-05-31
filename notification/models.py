@@ -7,4 +7,4 @@ from tweet.models import TweetMessage
 class NotificationModel(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     tweet = models.ForeignKey(TweetMessage, on_delete=models.CASCADE)
-    viewed = models.BooleanField()
+    viewed = models.BooleanField(default=False)
