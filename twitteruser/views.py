@@ -25,25 +25,27 @@ class Index(LoginRequiredMixin, View):
         })
 
 
-def profile(request, name):
-    usuario = CustomUser.objects.get(username=name)
-    tweets = TweetMessage.objects.filter(user=usuario).order_by('-date')
-    try:
-        current_user = CustomUser.objects.get(username=request.user.username)
-        following = usuario in current_user.following.all()
-        num_notif = NotificationModel.objects.filter(
-            user=request.user, viewed=False).count()
-    except CustomUser.DoesNotExist:
-        following = False
-        num_notif = 0
-    num_tweets = tweets.count()
-    return render(request, 'twitteruser/profile.html', {
-        'tweets': tweets,
-        'profile_user': usuario,
-        'following': following,
-        'num_tweets': num_tweets,
-        'num_notif': num_notif
-    })
+class Profile(View):
+    def get(self, request, name):
+        usuario = CustomUser.objects.get(username=name)
+        tweets = TweetMessage.objects.filter(user=usuario).order_by('-date')
+        try:
+            current_user = CustomUser.objects.get(
+                username=request.user.username)
+            following = usuario in current_user.following.all()
+            num_notif = NotificationModel.objects.filter(
+                user=request.user, viewed=False).count()
+        except CustomUser.DoesNotExist:
+            following = False
+            num_notif = 0
+        num_tweets = tweets.count()
+        return render(request, 'twitteruser/profile.html', {
+            'tweets': tweets,
+            'profile_user': usuario,
+            'following': following,
+            'num_tweets': num_tweets,
+            'num_notif': num_notif
+        })
 
 
 @login_required
