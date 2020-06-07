@@ -4,23 +4,25 @@ from tweet.models import TweetMessage
 from twitteruser.models import CustomUser
 from notification.models import NotificationModel
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
 
-# Create your views here.
-@login_required
-def index(request):
-    usuario = CustomUser.objects.get(username=request.user.username)
-    followed = usuario.following.all()
-    tweets = TweetMessage.objects.filter(user__in=followed).order_by(
-        '-date') | TweetMessage.objects.filter(user=usuario).order_by('-date')
-    mytweets = TweetMessage.objects.filter(user=usuario).count()
-    num_notif = NotificationModel.objects.filter(
-        user=request.user, viewed=False).count()
-    return render(request, 'twitteruser/index.html', {
-        'tweets': tweets,
-        'num_tweets': mytweets,
-        'num_notif': num_notif
-    })
+class Index(LoginRequiredMixin, View):
+
+    def get(self, request):
+        usuario = CustomUser.objects.get(username=request.user.username)
+        followed = usuario.following.all()
+        tweets = TweetMessage.objects.filter(user__in=followed).order_by(
+            '-date') | TweetMessage.objects.filter(user=usuario).order_by('-date')
+        mytweets = TweetMessage.objects.filter(user=usuario).count()
+        num_notif = NotificationModel.objects.filter(
+            user=request.user, viewed=False).count()
+        return render(request, 'twitteruser/index.html', {
+            'tweets': tweets,
+            'num_tweets': mytweets,
+            'num_notif': num_notif
+        })
 
 
 def profile(request, name):

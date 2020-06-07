@@ -19,7 +19,7 @@ from twitteruser import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='homepage'),
+    path('', views.Index.as_view(), name='homepage'),
     path('', include('authentication.urls')),
     path('tweet/', include('tweet.urls')),
     path('profile/', include('twitteruser.urls')),
