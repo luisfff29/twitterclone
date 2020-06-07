@@ -10,7 +10,7 @@ from django.views.generic import View
 class NotificationView(LoginRequiredMixin, View):
     def get(self, request):
         num_tweets = TweetMessage.objects.filter(
-            user=CustomUser.objects.get(username=request.user.username)).count()
+            user=CustomUser.objects.get(username=request.user.username))
         tweets = NotificationModel.objects.filter(
             user=request.user, viewed=False)
         num_notif = tweets.count()
@@ -18,7 +18,7 @@ class NotificationView(LoginRequiredMixin, View):
             tweet.viewed = True
             tweet.save()
         return render(request, 'notification/notification.html', {
-            'num_tweets': num_tweets,
+            'num_tweets': num_tweets.count(),
             'tweets': tweets,
             'num_notif': num_notif
         })

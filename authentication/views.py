@@ -25,7 +25,9 @@ class LoginView(View):
             )
             if user:
                 login(request, user)
-                return HttpResponseRedirect(request.GET.get('next', reverse('homepage')))
+                return HttpResponseRedirect(
+                    request.GET.get('next', reverse('homepage'))
+                )
 
 
 class SignupView(View):
