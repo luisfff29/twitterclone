@@ -2,13 +2,19 @@ from django.shortcuts import render, reverse
 from authentication.forms import LoginForm, SignupForm
 from twitteruser.models import CustomUser
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
 # Create your views here.
-def loginview(request):
-    if request.method == 'POST':
+
+
+class LoginView(View):
+    def get(self, request):
+        form = LoginForm()
+        return render(request, 'authentication/login.html', {'form': form})
+
+    def post(self, request):
         form = LoginForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -21,12 +27,13 @@ def loginview(request):
                 login(request, user)
                 return HttpResponseRedirect(request.GET.get('next', reverse('homepage')))
 
-    form = LoginForm()
-    return render(request, 'authentication/login.html', {'form': form})
 
+class SignupView(View):
+    def get(self, request):
+        form = SignupForm()
+        return render(request, 'authentication/signup.html', {'form': form})
 
-def signupview(request):
-    if request.method == 'POST':
+    def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
@@ -39,11 +46,8 @@ def signupview(request):
             )
         return HttpResponseRedirect(reverse('homepage'))
 
-    form = SignupForm()
-    return render(request, 'authentication/signup.html', {'form': form})
 
-
-@login_required
-def logoutview(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('homepage'))
+class LogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(reverse('homepage'))
