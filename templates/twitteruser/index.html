@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
+{% load static %}
 
 {% block card_block %}
 {% include 'card.html' with person=user %}
 {% endblock %}
 
 {% block body_block %}
-<h1>What's happening, {{ user.username }}?</h1>
-{% for tweet in tweets %}
-<div class="list-group">
-  <div class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h4 class="mb-1">
+<h3>Tweets</h3>
+<div>
+  {% for tweet in tweets %}
+  <div class="card p-2 my-3 rounded-xl bg-tweet">
+    <div>
+      <img class="rounded-circle tweet-avatar" src="{% static 'images/avatar.png' %}" alt="avatar" />
+      <span>
         <a href="{% url 'profile' tweet.user.username %}">@{{ tweet.user.username }}</a>
-      </h4>
-      <small><a href="{% url 'tweet' tweet.id %}">{{ tweet.date }}</a></small>
+      </span>
     </div>
-    <p class="mb-1">>> {{ tweet.body }}</p>
+    <div class="card-body">
+      <p class="card-text text-white-50">{{ tweet.body }}</p>
+    </div>
+    <small class="text-right"><a href="{% url 'tweet' tweet.id %}">{{ tweet.date }}</a></small>
   </div>
+  {% empty %}
+  <p>It looks like there aren't any tweets to display! Why not try <a href="{% url 'compose' %}">writing one</a> or
+    following some people?</p>
+  {% endfor %}
 </div>
-{% empty %}
-<p>It looks like there aren't any tweets to display! Why not try <a href="{% url 'compose' %}">writing one</a> or
-  following some people?</p>
-{% endfor %}
 {% endblock  %}
