@@ -18,7 +18,7 @@
     {% if user.is_authenticated %}
     <nav class="navbar navbar-expand-sm">
       <a class="navbar-brand" href="{% url 'homepage' %}">Home</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button class="navbar-toggler navbar-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -44,17 +44,17 @@
     </nav>
     {% endif %}
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 py-3">
         <div class="p-2 pb-3">
           <img class="img_inverted pl-1" src="{% static 'images/twitter_fake.png' %}" alt="">
-          <h3 class="d-inline align-middle">ReadyTweet</h3>
+          <h3 class="d-inline align-middle text-white-50">ReadyTweet</h3>
         </div>
-        <div class="card rounded-xl">
+        <div class="card bg-profile rounded-xl">
           {% block card_block %}
           {% endblock %}
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8 py-3">
         {% block body_block %}
         {% endblock %}
       </div>

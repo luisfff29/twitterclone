@@ -1,6 +1,7 @@
-/* :root {
+:root {
   --bg-dark: #15202b;
-  --bg-text: #203741;
+  --bg-profile: #2d3741;
+  --bg-tweet: #202a34;
   --color-text: #878b87;
 }
 
@@ -11,18 +12,21 @@
 
 body {
   background-color: var(--bg-dark);
-} */
+}
 
 #navbarNav {
   position: absolute;
   right: 0;
 }
 
-.img_rounded {
-  width: auto;
+.profile-avatar {
   height: 100px;
-  border-radius: 50%;
-  position: relative;
+  width: 100px;
+}
+
+.tweet-avatar {
+  height: 25px;
+  width: 25px;
 }
 
 .img_inverted {
@@ -31,6 +35,33 @@ body {
 
 .rounded-xl {
   border-radius: 25px;
+}
+
+.card_profile {
+  padding: 3rem;
+}
+
+.bg-profile {
+  background-color: var(--bg-profile);
+}
+
+.bg-tweet {
+  background-color: var(--bg-tweet);
+}
+
+.bg-profile *:not(.btn) {
+  background-color: var(--bg-profile);
+}
+
+.bg-tweet * {
+  background-color: var(--bg-tweet);
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .profile-avatar {
+    height: 65px;
+    width: 65px;
+  }
 }
 
 @media (max-width: 575px) {
