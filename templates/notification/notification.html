@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
 
-{% block card_block %}
-{% include 'card.html' with person=user %}
+{% block profile_card_block %}
+{% include 'profile_card.html' with data=user %}
 {% endblock %}
 
 {% block body_block %}
-<h1>Notifications</h1>
+<h3>Notifications</h3>
 {% for tweet in tweets %}
-<div class="list-group">
-  <div class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h4 class="mb-1"><a href="{% url 'profile' tweet.tweet.user.username %}">@{{ tweet.tweet.user.username }}</a></h4>
-      <small><a href="{% url 'tweet' tweet.tweet.id %}">{{ tweet.tweet.date }}</a></small>
-    </div>
-    <p class="mb-1">>> {{ tweet.tweet.body }}</p>
-  </div>
-</div>
+{% include 'tweet_card.html' with data=tweet.tweet %}
 {% empty %}
-<p>You don't have any notification in this moment...</p>
+<p class="text-white-50">You don't have any notifications</p>
 
 {% endfor %}
 {% endblock %}

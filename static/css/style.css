@@ -45,7 +45,8 @@ body {
   background-color: var(--bg-profile);
 }
 
-.bg-tweet {
+.bg-tweet,
+.bg-tweet:focus {
   background-color: var(--bg-tweet);
 }
 

@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block card_block %}
+{% block profile_card_block %}
 
 {% if user.username == profile_user.username %}
-{% include 'card.html' with person=profile_user %}
+{% include 'profile_card.html' with data=profile_user %}
 {% else %}
-{% include 'card.html' with person=profile_user show_button=True %}
+{% include 'profile_card.html' with data=profile_user show_button=True %}
 {% endif %}
 
 {% endblock %}
 
 {% block body_block %}
-<h1>Profile: {{ profile_user }}</h1>
+
 {% for tweet in tweets %}
-<div class="list-group">
-  <div class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h4 class="mb-1"><a href="{% url 'profile' tweet.user.username %}">@{{ tweet.user.username }}</a></h4>
-      <small><a href="{% url 'tweet' tweet.id %}">{{ tweet.date }}</a></small>
-    </div>
-    <p class="mb-1">>> {{ tweet.body }}</p>
-  </div>
-</div>
+{% include 'tweet_card.html' with data=tweet %}
 {% empty %}
-<p>It looks like this person hasn't tweeted anything...</p>
+<p class="text-white-50">It looks like this user hasn't tweeted anything...</p>
 {% endfor %}
+
 {% endblock  %}

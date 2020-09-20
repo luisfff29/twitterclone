@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load static %}
+<div class="card p-2 my-3 rounded-xl bg-tweet">
+  <div>
+    <img class="rounded-circle tweet-avatar" src="{% static 'images/avatar.png' %}" alt="avatar" />
+    <span>
+      <a href="{% url 'profile' data.user.username %}">@{{ data.user.username }}</a>
+    </span>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-white-50">{{ data.body }}</p>
+  </div>
+  <small class="text-right"><a href="{% url 'tweet' data.id %}">{{ data.date }}</a></small>
+</div>

@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block card_block %}
-{% include 'card.html' with person=user %}
+{% block profile_card_block %}
+{% include 'profile_card.html' with data=user %}
 {% endblock %}
 
 {% block body_block %}
-<h2>Tell everybody what you're up to!</h2>
-<h2>What's new? What's changed?</h2>
+<h3>Tell everybody what you're up to!</h3>
+<h3>What's new? What's changed?</h3>
 <form method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value='Tweet!'>
+  {{ form.body }}
+  <a class="btn btn-primary rounded-pill px-5 py-2 float-right" type="submit">Tweet!</a>
 </form>
 {% endblock %}
