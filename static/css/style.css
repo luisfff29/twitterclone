@@ -12,3 +12,15 @@
 body {
   background-color: var(--bg-dark);
 } */
+
+#navbarNav {
+  position: absolute;
+  right: 0;
+}
+
+@media (max-width: 575px) {
+  #navbarNav {
+    position: relative;
+    right: auto;
+  }
+}
