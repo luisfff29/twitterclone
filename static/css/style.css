@@ -18,6 +18,21 @@ body {
   right: 0;
 }
 
+.img_rounded {
+  width: auto;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.img_inverted {
+  transform: rotateY(180deg);
+}
+
+.rounded-xl {
+  border-radius: 25px;
+}
+
 @media (max-width: 575px) {
   #navbarNav {
     position: relative;

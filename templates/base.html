@@ -44,13 +44,17 @@
     </nav>
     {% endif %}
     <div class="row">
-      <div class="col-4">
-        <div class="card">
+      <div class="col-md-4">
+        <div class="p-2 pb-3">
+          <img class="img_inverted pl-1" src="{% static 'images/twitter_fake.png' %}" alt="">
+          <h3 class="d-inline align-middle">ReadyTweet</h3>
+        </div>
+        <div class="card rounded-xl">
           {% block card_block %}
           {% endblock %}
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-md-8">
         {% block body_block %}
         {% endblock %}
       </div>
