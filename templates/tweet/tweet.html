@@ -10,6 +10,6 @@
 <form method="POST">
   {% csrf_token %}
   {{ form.body }}
-  <a class="btn btn-primary rounded-pill px-5 py-2 float-right" type="submit">Tweet!</a>
+  <input class="btn btn-primary rounded-pill px-5 py-2 float-right" type="submit" value="Tweet!" />
 </form>
 {% endblock %}
