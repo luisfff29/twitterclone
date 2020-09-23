@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 {% extends 'authentication/auth_base.html' %}
 {% block auth_block %}
-<div class='container'>
-  <div class="row mt-5">
-    <div class="col-6">
-      <h1>Welcome to the Twitter clone! Log in to get posting an see what your friends are up to!</h1>
-      <p>New around here? <a href="{% url 'signup' %}">Sign up</a></p>
-    </div>
-    <div class="col-6">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body text-center shadow-lg">
+      <a href="{% url 'auth_home' %}" role="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <br>
+      {% load static %}
+      <img class="mb-4" src="{% static 'images/twitter_logo.png' %}" alt="twitter_logo">
+      <h5 class="modal-title text-center">Log in</h5>
+
       <form method='POST'>
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Log In">
+        <br>
+        {{ form.username }}
+        <br>
+        {{ form.password }}
+        <br>
+        <input type="submit" class="btn btn-primary btn-lg btn-block rounded-pill" value="Log in" />
+        <small>New around here? <a href="{% url 'signup' %}">Sign up</a></small>
       </form>
     </div>
   </div>

@@ -15,7 +15,7 @@ body {
 }
 
 .auth_home {
-  width: auto;
+  width: 100%;
   height: 100vh;
   text-align: center;
 }
@@ -31,12 +31,15 @@ body {
   background-color: transparent;
 }
 
-.welcome > div,
-.auth_buttons > div {
+.center_all {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.welcome > div,
+.auth_buttons > div {
   width: 80%;
 }
 
@@ -53,10 +56,6 @@ body {
 .tweet-avatar {
   height: 25px;
   width: 25px;
-}
-
-.img_inverted {
-  transform: rotateY(180deg);
 }
 
 .rounded-xl {
@@ -92,6 +91,10 @@ body {
 }
 
 @media (max-width: 575px) {
+  .auth_home {
+    width: auto;
+  }
+
   .welcome h1 {
     font-size: 2rem;
   }

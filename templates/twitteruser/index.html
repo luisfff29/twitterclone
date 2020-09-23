@@ -12,7 +12,8 @@
   {% for tweet in tweets %}
   {% include 'tweet_card.html' with data=tweet %}
   {% empty %}
-  <p>No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some people.</p>
+  <p class="text-white-50">No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some
+    people.</p>
   {% endfor %}
 </div>
 {% endblock  %}
