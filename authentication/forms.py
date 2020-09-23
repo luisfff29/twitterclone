@@ -18,6 +18,19 @@ class LoginForm(forms.Form):
 
 
 class SignupForm(forms.Form):
+    full_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-control bg-tweet text-white border-0',
+            'placeholder': 'Full Name'
+        }
+    ))
+    email = forms.CharField(widget=forms.EmailInput(
+        attrs={
+            'class': 'form-control bg-tweet text-white border-0',
+            'placeholder': 'Email',
+            'type': 'email'
+        }
+    ))
     username = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control bg-tweet text-white border-0',
@@ -29,12 +42,5 @@ class SignupForm(forms.Form):
             'class': 'form-control bg-tweet text-white border-0',
             'placeholder': 'Password',
             'type': 'password'
-        }
-    ))
-    email = forms.CharField(widget=forms.EmailInput(
-        attrs={
-            'class': 'form-control bg-tweet text-white border-0',
-            'placeholder': 'Email',
-            'type': 'email'
         }
     ))

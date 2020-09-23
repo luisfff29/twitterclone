@@ -42,13 +42,13 @@ class SignupView(View):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            CustomUser.objects.create_user(
+            custom_user = CustomUser.objects.create_user(
                 username=data['username'],
                 password=data['password'],
                 email=data['email'],
-                is_staff=True,
-                is_superuser=True
+                full_name=data['full_name'],
             )
+            custom_user.save()
         return HttpResponseRedirect(reverse('homepage'))
 
 

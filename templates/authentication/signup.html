@@ -15,11 +15,13 @@
       <form method='POST'>
         {% csrf_token %}
         <br>
+        {{ form.full_name }}
+        <br>
+        {{ form.email }}
+        <br>
         {{ form.username }}
         <br>
         {{ form.password }}
-        <br>
-        {{ form.email }}
         <br>
         <input type="submit" class="btn color-btn btn-lg btn-block rounded-pill" value="Sign up" />
         <small>Already have an account? <a href="{% url 'login' %}">Log in here</a></small>
