@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "authentication/auth_base.html" %}
+{% block auth_block %}
+<div class="row auth_home">
+  <div class="col-md-7 welcome">
+    <div>
+      <h1>Welcome to the Twitter clone!</h1>
+      <h2>See what's happening in the world right now</h2>
+    </div>
+  </div>
+  <div class="col-md-5 auth_buttons">
+    <div>
+      <p class="lead">Join today.</p>
+      <button type="button" class="btn btn-primary btn-lg btn-block rounded-pill">Sign up</button>
+      <button type="button" class="btn-lg btn-block rounded-pill border border-primary text-primary">
+        Log in
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock auth_block %}

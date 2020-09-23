@@ -14,6 +14,32 @@ body {
   background-color: var(--bg-dark);
 }
 
+.auth_home {
+  width: auto;
+  height: 100vh;
+  text-align: center;
+}
+
+.welcome {
+  background: var(--bg-dark)
+    url("http://127.0.0.1:8000/static/images/twitter_bg.jpg") no-repeat center
+    center;
+  background-size: cover;
+}
+
+.welcome * {
+  background-color: transparent;
+}
+
+.welcome > div,
+.auth_buttons > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
 #navbarNav {
   position: absolute;
   right: 0;
@@ -66,6 +92,13 @@ body {
 }
 
 @media (max-width: 575px) {
+  .welcome h1 {
+    font-size: 2rem;
+  }
+  .welcome h2 {
+    font-size: 1.5rem;
+  }
+
   #navbarNav {
     position: relative;
     right: auto;

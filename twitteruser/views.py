@@ -9,7 +9,7 @@ from django.views.generic import View
 
 
 class Index(LoginRequiredMixin, View):
-
+    
     def get(self, request):
         usuario = CustomUser.objects.get(username=request.user.username)
         followed = usuario.following.all()

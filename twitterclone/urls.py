@@ -18,9 +18,9 @@ from django.urls import path, include
 from twitteruser import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.Index.as_view(), name='homepage'),
     path('', include('authentication.urls')),
+    path('admin/', admin.site.urls),
+    path('home/', views.Index.as_view(), name='homepage'),
     path('tweet/', include('tweet.urls')),
     path('profile/', include('twitteruser.urls')),
     path('notification/', include('notification.urls')),
