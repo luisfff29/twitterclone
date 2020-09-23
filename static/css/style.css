@@ -3,6 +3,7 @@
   --bg-profile: #2d3741;
   --bg-tweet: #202a34;
   --color-text: #878b87;
+  --color-button: #1da1f2;
 }
 
 * {
@@ -13,6 +14,8 @@
 body {
   background-color: var(--bg-dark);
 }
+
+/*** Auth page ***/
 
 .auth_home {
   width: 100%;
@@ -43,6 +46,8 @@ body {
   width: 80%;
 }
 
+/*** Nav and Side bar ***/
+
 #navbarNav {
   position: absolute;
   right: 0;
@@ -51,6 +56,28 @@ body {
 .profile-avatar {
   height: 100px;
   width: 100px;
+}
+
+/*** General ***/
+
+.color-btn {
+  background-color: var(--color-button);
+  color: white;
+}
+
+.color-border-btn {
+  color: var(--color-button);
+  border: solid var(--color-button);
+}
+
+.color-btn:hover {
+  background-color: #1da0f2b8;
+  color: white;
+}
+
+.color-border-btn:hover {
+  background-color: var(--bg-tweet);
+  color: var(--color-button);
 }
 
 .tweet-avatar {

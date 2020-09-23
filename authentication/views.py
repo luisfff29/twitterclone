@@ -55,4 +55,4 @@ class SignupView(View):
 class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
-        return HttpResponseRedirect(reverse('homepage'))
+        return HttpResponseRedirect(reverse('auth_home'))

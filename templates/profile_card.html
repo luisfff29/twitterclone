@@ -35,9 +35,9 @@
     {% elif user.is_authenticated and following %}
     <a href="{% url 'unfollow' profile_user.username %}" class='btn btn-danger rounded-pill px-5 py-2'>Unfollow -</a>
     {% elif user.is_authenticated and not following %}
-    <a href="{% url 'follow' profile_user.username %}" class='btn btn-primary rounded-pill px-5 py-2'>Follow +</a>
+    <a href="{% url 'follow' profile_user.username %}" class='btn color-btn rounded-pill px-5 py-2'>Follow +</a>
     {% elif not user.is_authenticated %}
-    <a href="{% url 'follow' profile_user.username %}" class='btn btn-primary rounded-pill px-5 py-2'>Follow +</a>
+    <a href="{% url 'follow' profile_user.username %}" class='btn color-btn rounded-pill px-5 py-2'>Follow +</a>
 
     {% endif %}
   </div>
