@@ -8,6 +8,7 @@
 
 * {
   background-color: var(--bg-dark);
+  background-color: inherit;
   color: white;
 }
 
@@ -23,34 +24,32 @@ body {
   text-align: center;
 }
 
-.welcome {
+.twitter-bg {
   background: var(--bg-dark)
     url("http://127.0.0.1:8000/static/images/twitter_bg.jpg") no-repeat center
     center;
   background-size: cover;
 }
 
-.welcome * {
+.twitter-bg * {
   background-color: transparent;
 }
 
-.center_all {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.welcome > div,
+.twitter-bg > div,
 .auth_buttons > div {
   width: 80%;
 }
 
+.alert-twitter {
+  background-color: rgb(29, 161, 242, 0.5);
+  color: rgb(138, 198, 235);
+  border: 1px solid rgb(138, 198, 235);
+}
+
 /*** Nav and Side bar ***/
 
-#navbarNav {
-  position: absolute;
-  right: 0;
+#navbarNav ul {
+  margin-left: auto;
 }
 
 .profile-avatar {
@@ -70,6 +69,11 @@ body {
   border: solid var(--color-button);
 }
 
+.color-outline-btn {
+  color: rgb(138, 198, 235);
+  border: 1px solid rgb(138, 198, 235);
+}
+
 .color-btn:hover {
   background-color: #1da0f2b8;
   color: white;
@@ -78,6 +82,12 @@ body {
 .color-border-btn:hover {
   background-color: var(--bg-tweet);
   color: var(--color-button);
+}
+
+.color-outline-btn:hover {
+  color: white;
+  border: 1px solid var(var(--color-button));
+  background-color: var(--color-button);
 }
 
 .tweet-avatar {
@@ -99,7 +109,7 @@ body {
 
 .bg-tweet,
 .bg-tweet:focus {
-  background-color: var(--bg-tweet);
+  background-color: var(--bg-tweet) !important;
 }
 
 .bg-profile *:not(.btn) {
@@ -122,10 +132,10 @@ body {
     width: auto;
   }
 
-  .welcome h1 {
+  .twitter-bg h1 {
     font-size: 2rem;
   }
-  .welcome h2 {
+  .twitter-bg h2 {
     font-size: 1.5rem;
   }
 

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
   {% load static %}
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -17,14 +17,20 @@
   <div class="container">
     {% if user.is_authenticated %}
     <nav class="navbar navbar-expand-sm">
-      <a class="navbar-brand" href="{% url 'homepage' %}">Home</a>
-      <button class="navbar-toggler navbar-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <a class="navbar-brand m-0" href="{% url 'homepage' %}">
+        <img src="{% static 'images/twitter_logo.png' %}" alt="twitter_logo">
+        <h3 class="d-inline align-middle text-white-50">ReadyTweet</h3>
+      </a>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'compose' %}">Create a Tweet</a>
           </li>
@@ -43,20 +49,22 @@
         </ul>
       </div>
     </nav>
-    {% endif %}
-    <div class="row">
-      <div class="col-md-4 py-3">
-        <div class="pb-3">
-          <a href="{% url 'homepage' %}"><img class="pl-1" src="{% static 'images/twitter_logo.png' %}"
-              alt="twitter_logo"></a>
-          <h3 class="d-inline align-middle text-white-50">ReadyTweet</h3>
-        </div>
-        <div class="card bg-profile rounded-xl">
-          {% block profile_card_block %}
-          {% endblock %}
-        </div>
+    {% else %}
+    <div class="alert alert-twitter row" role="alert">
+      <div class="col-md bg-transparent">Twitter clone is Better when you are Logged In</div>
+      <div class="col-md-4 bg-transparent text-right"><a href="{% url 'auth_home' %}"
+          class="btn color-outline-btn rounded-pill">Log in
+          or Sign up</a>
       </div>
-      <div class="col-md-8 pb-3 pt-4">
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="col-md-4">
+        {% block profile_card_block %}
+        {% endblock %}
+      </div>
+      <div class="col-md-8">
         {% block body_block %}
         {% endblock %}
       </div>
@@ -64,14 +72,11 @@
   </div>
 
   <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
   </script>
 </body>
 
