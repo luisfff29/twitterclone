@@ -2,14 +2,14 @@
 {% extends "authentication/auth_base.html" %}
 {% block auth_block %}
 <div class="row auth_home">
-  <div class="col-md-7 welcome">
-    <div class="center_all">
+  <div class="col-md-7 d-flex justify-content-center align-items-center twitter-bg">
+    <div>
       <h1>Welcome to the Twitter clone!</h1>
       <h2>See what's happening in the world right now</h2>
     </div>
   </div>
-  <div class="col-md-5 auth_buttons">
-    <div class="center_all">
+  <div class="col-md-5 auth_buttons d-flex justify-content-center align-items-center">
+    <div>
       <p class="lead">Join today.</p>
       <a role="button" href="{% url 'signup' %}" class="btn color-btn btn-lg btn-block rounded-pill">Sign up</a>
       <a role="button" href="{% url 'login' %}" class="btn color-border-btn btn-lg btn-block rounded-pill">
