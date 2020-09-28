@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block body_block %}
+
 <h3>Notifications</h3>
-{% for tweet in tweets %}
+{% for tweet in tweets_notif %}
 {% include 'tweet_card.html' with data=tweet.tweet %}
+
 {% empty %}
 <p class="text-white-50">You don't have any notifications</p>
 
 {% endfor %}
+
 {% endblock %}

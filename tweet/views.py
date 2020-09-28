@@ -12,14 +12,13 @@ import re
 # Create your views here.
 class TweetView(LoginRequiredMixin, View):
     def get(self, request):
-        num_tweets = TweetMessage.objects.filter(
-            user=CustomUser.objects.get(username=request.user.username))
+        tweets = TweetMessage.objects.filter(user=request.user)
         num_notif = NotificationModel.objects.filter(
             user=request.user, viewed=False).count()
         form = TweetForm()
         return render(request, 'tweet/tweet.html', {
             'form': form,
-            'num_tweets': num_tweets.count(),
+            'tweets': tweets,
             'num_notif': num_notif
         })
 
@@ -48,7 +47,7 @@ class TweetView(LoginRequiredMixin, View):
 class TweetDetail(View):
     def get(self, request, id):
         tweet = TweetMessage.objects.get(id=id)
-        num_tweets = TweetMessage.objects.filter(user=tweet.user).count()
+        tweets = TweetMessage.objects.filter(user=tweet.user)
         profile_user = tweet.user
         try:
             num_notif = NotificationModel.objects.filter(
@@ -62,7 +61,7 @@ class TweetDetail(View):
         return render(request, 'tweet/detail.html', {
             'tweet': tweet,
             'following': following,
-            'num_tweets': num_tweets,
+            'tweets': tweets,
             'profile_user': profile_user,
             'num_notif': num_notif
         })

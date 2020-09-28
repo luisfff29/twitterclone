@@ -9,7 +9,7 @@
 {% block body_block %}
 <h3>All Tweets</h3>
 <div>
-  {% for tweet in tweets %}
+  {% for tweet in all_tweets %}
   {% include 'tweet_card.html' with data=tweet %}
   {% empty %}
   <p class="text-white-50">No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some

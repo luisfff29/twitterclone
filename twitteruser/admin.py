@@ -11,8 +11,9 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (*UserAdmin.fieldsets, (None, {
         "fields": (
             'full_name',
-            ),
-        },),
+            'following',
+        ),
+    },),
     )
 
 

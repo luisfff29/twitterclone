@@ -23,14 +23,36 @@
     <div class="row rounded-xl">
       <div class="col">
         <span class="text-white-50">Tweets</span>
-        <span class="d-block h4 font-weight-bolder">{{ num_tweets }}</span>
+        <span class="d-block h4 font-weight-bolder">{{ tweets|length }}</span>
       </div>
       <div class="col">
         <span class="text-white-50">Following</span>
-        <span class="d-block h4 font-weight-bolder">{{ data.following.count }}</span>
+        <span data-toggle="modal" data-target="#following" class="d-block h4 font-weight-bolder"
+          style="cursor: pointer;">{{ data.following.count }}</span>
       </div>
     </div>
 
+  </div>
+
+  <div class="modal fade bg-transparent" id="following" tabindex="-1" aria-labelledby="followingLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm rounded-xl">
+      <div class="modal-content bg-transparent">
+        <div class="modal-header bg-transparent">
+          <h5 class="modal-title" id="followingLabel">Following:</h5>
+        </div>
+        <ul class="list-group list-group-flush pb-2 bg-transparent">
+          {% for usr in data.following.all %}
+          <li class="list-group-item">
+            <img class="rounded-circle tweet-avatar" src="{% static 'images/avatar.png' %}" alt="avatar" />
+            <span>
+              <a href="{% url 'profile' usr.username %}">@{{ usr.username }}</a>
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 
 
