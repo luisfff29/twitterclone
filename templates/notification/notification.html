@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block profile_card_block %}
-{% include 'profile_card.html' with data=user %}
+<div class="col-md-4">
+  {% include 'profile_card.html' with data=user %}
+</div>
 {% endblock %}
 
 {% block body_block %}
-
-<h3>Notifications</h3>
-{% for tweet in tweets_notif %}
-{% include 'tweet_card.html' with data=tweet.tweet %}
-
-{% empty %}
-<p class="text-white-50">You don't have any notifications</p>
-
-{% endfor %}
-
+<div class="col-md-8">
+  <h3>Notifications</h3>
+  {% for tweet in tweets_notif %}
+  {% include 'tweet_card.html' with data=tweet.tweet %}
+  {% empty %}
+  <p class="text-white-50">You don't have any notifications</p>
+  {% endfor %}
+</div>
 {% endblock %}

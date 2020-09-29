@@ -3,17 +3,31 @@
 {% load static %}
 
 {% block profile_card_block %}
-{% include 'profile_card.html' with data=user %}
+<div class="col-md-3">
+  {% include 'profile_card.html' with data=user %}
+</div>
 {% endblock %}
 
 {% block body_block %}
-<h3>All Tweets</h3>
-<div>
-  {% for tweet in all_tweets %}
-  {% include 'tweet_card.html' with data=tweet %}
-  {% empty %}
-  <p class="text-white-50">No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some
-    people.</p>
-  {% endfor %}
+<div class="col-md-6">
+  <h3>All Tweets</h3>
+  <div>
+    {% for tweet in all_tweets %}
+    {% include 'tweet_card.html' with data=tweet %}
+    {% empty %}
+    <p class="text-white-50">No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some
+      people.</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock  %}
+
+{% block follow_block %}
+<div class="col-md-3">
+  {% if who_to_follow|length > 1 %}
+  {% include 'follow_card.html' %}
+  {% else %}
+  {% include 'follow_card.html' with no_users=True %}
+  {% endif %}
+</div>
+{% endblock %}

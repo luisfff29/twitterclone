@@ -7,7 +7,7 @@
 }
 
 * {
-  background-color: var(--bg-dark);
+  /* background-color: var(--bg-dark); */
   background-color: inherit;
   color: white;
 }
@@ -55,6 +55,16 @@ body {
 .profile-avatar {
   height: 100px;
   width: 100px;
+}
+
+/*** Follow card ***/
+
+#followCard * {
+  background-color: transparent;
+}
+
+.carousel-indicators .active {
+  background-color: white !important;
 }
 
 /*** General ***/

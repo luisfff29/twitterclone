@@ -2,15 +2,17 @@
 {% extends 'base.html' %}
 
 {% block profile_card_block %}
-{% include 'profile_card.html' with data=profile_user %}
+<div class="col-md-4">
+  {% include 'profile_card.html' with data=profile_user %}
+</div>
 {% endblock %}
 
 {% block body_block %}
-
-{% for tweet in tweets %}
-{% include 'tweet_card.html' with data=tweet %}
-{% empty %}
-<p class="text-white-50">It looks like this user hasn't tweeted anything yet...</p>
-{% endfor %}
-
+<div class="col-md-8">
+  {% for tweet in tweets %}
+  {% include 'tweet_card.html' with data=tweet %}
+  {% empty %}
+  <p class="text-white-50">It looks like this user hasn't tweeted anything yet...</p>
+  {% endfor %}
+</div>
 {% endblock  %}

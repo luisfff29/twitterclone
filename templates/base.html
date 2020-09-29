@@ -60,14 +60,12 @@
     {% endif %}
 
     <div class="row">
-      <div class="col-md-4">
-        {% block profile_card_block %}
-        {% endblock %}
-      </div>
-      <div class="col-md-8">
-        {% block body_block %}
-        {% endblock %}
-      </div>
+      {% block profile_card_block %}
+      {% endblock %}
+      {% block body_block %}
+      {% endblock %}
+      {% block follow_block %}
+      {% endblock %}
     </div>
   </div>
 

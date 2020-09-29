@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block profile_card_block %}
-{% include 'profile_card.html' with data=user %}
+<div class="col-md-4">
+  {% include 'profile_card.html' with data=user %}
+</div>
 {% endblock %}
 
 {% block body_block %}
-<h3>Tell everybody what you're up to!</h3>
-<h3>What's new? What's changed?</h3>
-<form method="POST">
-  {% csrf_token %}
-  {{ form.body }}
-  <input class="btn color-btn rounded-pill px-5 py-2 float-right" type="submit" value="Tweet!" />
-</form>
+<div class="col-md-8">
+  <h3>Tell everybody what you're up to!</h3>
+  <h3>What's new? What's changed?</h3>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.body }}
+    <input class="btn color-btn rounded-pill px-5 py-2 float-right" type="submit" value="Tweet!" />
+  </form>
+</div>
 {% endblock %}

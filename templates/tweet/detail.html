@@ -2,12 +2,14 @@
 {% extends 'base.html' %}
 
 {% block profile_card_block %}
-{% include 'profile_card.html' with data=profile_user %}
+<div class="col-md-4">
+  {% include 'profile_card.html' with data=profile_user %}
+</div>
 {% endblock %}
 
 {% block body_block %}
-
-<h2>Tweet Detail</h2>
-{% include 'tweet_card.html' with data=tweet %}
-
+<div class="col-md-8">
+  <h2>Tweet Detail</h2>
+  {% include 'tweet_card.html' with data=tweet %}
+</div>
 {% endblock %}
