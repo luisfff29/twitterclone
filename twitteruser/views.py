@@ -6,6 +6,7 @@ from notification.models import NotificationModel
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
+from twitteruser.helpers import random_users
 
 
 class Index(LoginRequiredMixin, View):
@@ -20,7 +21,7 @@ class Index(LoginRequiredMixin, View):
             user=request.user, viewed=False).count()
         return render(request, 'twitteruser/index.html', {
             'all_tweets': all_tweets,
-            'users_following': users_following,
+            'who_to_follow': random_users(request.user.username),
             'tweets': tweets,
             'num_notif': num_notif
         })
