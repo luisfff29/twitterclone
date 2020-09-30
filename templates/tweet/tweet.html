@@ -13,7 +13,9 @@
   <form method="POST">
     {% csrf_token %}
     {{ form.body }}
-    <input class="btn color-btn rounded-pill px-5 py-2 float-right" type="submit" value="Tweet!" />
+    <div class="text-right">
+      <input class="btn color-btn rounded-pill px-5 py-2" type="submit" value="Tweet!" />
+    </div>
   </form>
 </div>
 {% endblock %}

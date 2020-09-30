@@ -17,13 +17,17 @@
       </ol>
       <div class="carousel-inner text-center">
         <div class="carousel-item active">
-          <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+          <a href="{% url 'profile' who_to_follow|first  %}">
+            <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+          </a>
           <br>
           <a href="{% url 'profile' who_to_follow|first  %}">@{{ who_to_follow|first }}</a>
         </div>
         {% for usr in who_to_follow|slice:"1:" %}
         <div class=" carousel-item">
-          <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+          <a href=" {% url 'profile' usr.username %}">
+            <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+          </a>
           <br>
           <a href=" {% url 'profile' usr.username %}">@{{ usr.username }}</a>
         </div>

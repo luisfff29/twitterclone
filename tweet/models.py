@@ -11,3 +11,13 @@ class TweetMessage(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class TweetComment(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    message = models.ForeignKey(TweetMessage, on_delete=models.CASCADE)
+    body = models.TextField()
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.body

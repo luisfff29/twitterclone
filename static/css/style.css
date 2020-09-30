@@ -67,6 +67,16 @@ body {
   background-color: white !important;
 }
 
+/*** Tweets ***/
+
+.comments * {
+  background-color: #27333f !important;
+}
+
+.form-control {
+  border: solid #5c7084;
+}
+
 /*** General ***/
 
 .color-btn {
@@ -119,7 +129,7 @@ body {
 
 .bg-tweet,
 .bg-tweet:focus {
-  background-color: var(--bg-tweet) !important;
+  background-color: var(--bg-tweet);
 }
 
 .bg-profile *:not(.btn) {

@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse
-from tweet.forms import TweetForm
-from tweet.models import TweetMessage
+from tweet.forms import TweetForm, CommentForm
+from tweet.models import TweetMessage, TweetComment
 from twitteruser.models import CustomUser
 from django.http import HttpResponseRedirect
 from notification.models import NotificationModel
@@ -49,6 +49,9 @@ class TweetDetail(View):
         tweet = TweetMessage.objects.get(id=id)
         tweets = TweetMessage.objects.filter(user=tweet.user)
         profile_user = tweet.user
+        comments = TweetComment.objects.filter(
+            message=TweetMessage.objects.get(id=id)).order_by("-date")
+        form = CommentForm()
         try:
             num_notif = NotificationModel.objects.filter(
                 user=request.user, viewed=False).count()
@@ -59,9 +62,26 @@ class TweetDetail(View):
             following = False
 
         return render(request, 'tweet/detail.html', {
+            'form': form,
             'tweet': tweet,
+            'comments': comments,
             'following': following,
             'tweets': tweets,
             'profile_user': profile_user,
             'num_notif': num_notif
         })
+
+
+def add_comment_to_tweet(request, id):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            comment = TweetComment.objects.create(
+                user=request.user,
+                message=TweetMessage.objects.get(id=id),
+                body=data['body'],
+            )
+            comment.save()
+            return HttpResponseRedirect(reverse('tweet', args=(id,)))
+    return HttpResponseRedirect(reverse('tweet', args=(id,)))
