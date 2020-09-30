@@ -73,6 +73,10 @@ body {
   background-color: #27333f !important;
 }
 
+.comments > div {
+  box-shadow: -3px 0 var(--color-button);
+}
+
 .form-control {
   border: solid #5c7084;
 }

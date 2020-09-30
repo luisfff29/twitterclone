@@ -22,9 +22,9 @@
       <input type="submit" class="btn color-btn rounded-pill px-5 py-2" value="Submit">
     </div>
   </form>
-  <div class="comments p-3">
+  <div class="comments">
     {% for comment in comments %}
-    {% include "tweet_card.html" with data=comment %}
+    {% include "tweet_card.html" with data=comment no_comments=True %}
     {% endfor %}
   </div>
 </div>
