@@ -13,7 +13,7 @@
   <h3>All Tweets</h3>
   <div>
     {% for tweet in all_tweets %}
-    {% include 'tweet_card.html' with data=tweet comments=tweet.tweetcomment_set.all  %}
+    {% include 'tweet_card.html' with data=tweet comments=tweet.tweetcomment_set.all likes=tweet.like.all  %}
     {% empty %}
     <p class="text-white-50">No tweets to display! <a href="{% url 'compose' %}">Compose a new tweet</a> or follow some
       people.</p>

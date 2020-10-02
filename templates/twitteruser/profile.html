@@ -10,7 +10,7 @@
 {% block body_block %}
 <div class="col-md-8">
   {% for tweet in tweets %}
-  {% include 'tweet_card.html' with data=tweet comments=tweet.tweetcomment_set.all %}
+  {% include 'tweet_card.html' with data=tweet comments=tweet.tweetcomment_set.all likes=tweet.like.all %}
   {% empty %}
   <p class="text-white-50">It looks like this user hasn't tweeted anything yet...</p>
   {% endfor %}

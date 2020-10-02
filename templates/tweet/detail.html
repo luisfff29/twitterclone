@@ -12,7 +12,7 @@
   <div class="mb-4">
     {% include 'tweet_card.html' with data=tweet %}
   </div>
-  <form class="form-inline mb-2" action="comment" method="post">
+  <form class="form-inline mb-3" action="comment" method="post">
     {% csrf_token %}
     <div class="d-flex align-items-center mb-1">
       <img class="rounded-circle tweet-avatar mr-2" src="{% static 'images/avatar.png' %}" alt="avatar" />

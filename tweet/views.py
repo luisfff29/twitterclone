@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from notification.models import NotificationModel
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
+from django.contrib.auth.decorators import login_required
 import re
 
 
@@ -52,6 +53,7 @@ class TweetDetail(View):
         comments = TweetComment.objects.filter(
             message=TweetMessage.objects.get(id=id)).order_by("-date")
         form = CommentForm()
+        likes = tweet.like.all()
         try:
             num_notif = NotificationModel.objects.filter(
                 user=request.user, viewed=False).count()
@@ -65,6 +67,7 @@ class TweetDetail(View):
             'form': form,
             'tweet': tweet,
             'comments': comments,
+            'likes': likes,
             'following': following,
             'tweets': tweets,
             'profile_user': profile_user,
@@ -72,6 +75,7 @@ class TweetDetail(View):
         })
 
 
+@login_required
 def add_comment_to_tweet(request, id):
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -84,4 +88,20 @@ def add_comment_to_tweet(request, id):
             )
             comment.save()
             return HttpResponseRedirect(reverse('tweet', args=(id,)))
+    return HttpResponseRedirect(reverse('tweet', args=(id,)))
+
+
+@login_required
+def add_like(request, id):
+    tweet = TweetMessage.objects.get(id=id)
+    tweet.like.add(CustomUser.objects.get(username=request.user.username))
+    tweet.save()
+    return HttpResponseRedirect(reverse('tweet', args=(id,)))
+
+
+@login_required
+def remove_like(request, id):
+    tweet = TweetMessage.objects.get(id=id)
+    tweet.like.remove(CustomUser.objects.get(username=request.user.username))
+    tweet.save()
     return HttpResponseRedirect(reverse('tweet', args=(id,)))
