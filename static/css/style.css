@@ -119,6 +119,10 @@ body {
   width: 25px;
 }
 
+.font-smaller {
+  font-size: smaller;
+}
+
 .rounded-xl {
   border-radius: 25px;
 }

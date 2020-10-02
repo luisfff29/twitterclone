@@ -10,7 +10,7 @@
 <div class="col-md-8">
   <h3>Notifications</h3>
   {% for tweet in tweets_notif %}
-  {% include 'tweet_card.html' with data=tweet.tweet comments=tweet.tweetcomment_set.all likes=tweet.like.all %}
+  {% include 'tweet_card.html' with data=tweet.tweet comments=tweet.tweet.tweetcomment_set.all likes=tweet.tweet.like.all %}
   {% empty %}
   <p class="text-white-50">You don't have any notifications</p>
   {% endfor %}
