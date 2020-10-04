@@ -9,4 +9,5 @@ urlpatterns = [
          name='add_comment_to_tweet'),
     path('<int:id>/like', views.add_like, name='add_like'),
     path('<int:id>/dislike', views.remove_like, name='remove_like'),
+    path('<int:id>/delete', views.delete_tweet, name='delete_tweet'),
 ]

@@ -92,6 +92,15 @@ def add_comment_to_tweet(request, id):
 
 
 @login_required
+def delete_tweet(request, id):
+    tweet = TweetMessage.objects.get(id=id)
+    if request.user.username == tweet.user.username:
+        tweet.delete()
+        return HttpResponseRedirect(reverse('homepage'))
+    return HttpResponseRedirect(reverse('homepage'))
+
+
+@login_required
 def add_like(request, id):
     tweet = TweetMessage.objects.get(id=id)
     tweet.like.add(CustomUser.objects.get(username=request.user.username))
