@@ -12,6 +12,7 @@ class CustomUserAdmin(UserAdmin):
         "fields": (
             'full_name',
             'following',
+            'profile_pic',
         ),
     },),
     )
