@@ -3,7 +3,7 @@
 <div class="card p-2 mb-3 rounded-xl bg-tweet">
   <div class="d-flex align-items-center">
     <div>
-      <img class="rounded-circle tweet-avatar" src="{% static 'images/avatar.png' %}" alt="avatar" />
+      <img class="rounded-circle tweet-avatar" src={{ data.user.profile_pic.url }} alt="avatar" />
       <span>
         <a href="{% url 'profile' data.user.username %}">@{{ data.user.username }}</a>
       </span>

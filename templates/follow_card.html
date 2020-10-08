@@ -16,17 +16,19 @@
         {% endfor %}
       </ol>
       <div class="carousel-inner text-center">
+        {% for usr in who_to_follow|slice:":1" %}
         <div class="carousel-item active">
-          <a href="{% url 'profile' who_to_follow|first  %}">
-            <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+          <a href="{% url 'profile' usr.username %}">
+            <img class="rounded-circle profile-avatar" src={{ usr.profile_pic.url }} alt="default avatar">
           </a>
           <br>
-          <a href="{% url 'profile' who_to_follow|first  %}">@{{ who_to_follow|first }}</a>
+          <a href="{% url 'profile' usr.username  %}">@{{ usr.username }}</a>
         </div>
+        {% endfor %}
         {% for usr in who_to_follow|slice:"1:" %}
         <div class=" carousel-item">
           <a href=" {% url 'profile' usr.username %}">
-            <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+            <img class="rounded-circle profile-avatar" src={{ usr.profile_pic.url }} alt="default avatar">
           </a>
           <br>
           <a href=" {% url 'profile' usr.username %}">@{{ usr.username }}</a>

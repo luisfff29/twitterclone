@@ -37,7 +37,7 @@ class SignupView(View):
     def get(self, request):
         form = SignupForm()
         return render(request, 'authentication/signup.html', {'form': form})
-
+ 
     def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():

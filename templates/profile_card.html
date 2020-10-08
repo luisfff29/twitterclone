@@ -6,7 +6,7 @@
   </div>
   <div class="card-body rounded-xl pt-2">
     <div class="d-flex align-items-center pb-3">
-      <img class="rounded-circle profile-avatar" src="{% static 'images/avatar.png' %}" alt="default avatar">
+      <img class="rounded-circle profile-avatar" src={{ data.profile_pic.url }} alt="default avatar">
       <div class="pl-2">
         <h5 class="card-title">
           {% if data.full_name %}
@@ -48,7 +48,7 @@
         <ul class="list-group list-group-flush pb-2 bg-transparent">
           {% for usr in data.following.all %}
           <li class="list-group-item">
-            <img class="rounded-circle tweet-avatar" src="{% static 'images/avatar.png' %}" alt="avatar" />
+            <img class="rounded-circle tweet-avatar" src={{ usr.profile_pic.url }} alt="avatar" />
             <span>
               <a href="{% url 'profile' usr.username %}">@{{ usr.username }}</a>
             </span>

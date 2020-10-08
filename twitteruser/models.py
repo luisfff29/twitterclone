@@ -8,7 +8,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     signup_date = models.DateField(auto_now_add=True, null=True, blank=True)
     following = models.ManyToManyField('self', symmetrical=False)
-    profile_pic = models.ImageField(null=True, blank=True)
+    profile_pic = models.ImageField(
+        default="avatar.png", null=True, blank=True)
     REQUIRED_FIELDS = ['full_name', 'email']
 
     def __str__(self):
