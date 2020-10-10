@@ -57,6 +57,16 @@ body {
   width: 100px;
 }
 
+/*** Profile card ***/
+
+#profile_card form {
+  font-size: smaller;
+}
+
+#id_profile_pic {
+  background: transparent;
+}
+
 /*** Follow card ***/
 
 #followCard * {
@@ -125,10 +135,6 @@ body {
 
 .rounded-xl {
   border-radius: 25px;
-}
-
-.card_profile {
-  padding: 3rem;
 }
 
 .bg-profile {

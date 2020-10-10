@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse
 from django.contrib.auth.decorators import login_required
 from tweet.models import TweetMessage
 from twitteruser.models import CustomUser
+from twitteruser.forms import ChangePictureForm
 from notification.models import NotificationModel
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -31,6 +32,7 @@ class Profile(View):
     def get(self, request, name):
         usuario = CustomUser.objects.get(username=name)
         tweets = TweetMessage.objects.filter(user=usuario).order_by('-date')
+        form = ChangePictureForm()
         try:
             current_user = CustomUser.objects.get(
                 username=request.user.username)
@@ -46,8 +48,16 @@ class Profile(View):
             'tweets': tweets,
             'profile_user': usuario,
             'following': following,
-            'num_notif': num_notif
+            'num_notif': num_notif,
+            'form': form,
         })
+
+    def post(self, request, name):
+        form = ChangePictureForm(
+            request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse('profile', args=(name,)))
 
 
 @login_required

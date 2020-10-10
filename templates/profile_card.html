@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<div class="card rounded-xl bg-profile mb-4">
+<div class="card rounded-xl bg-profile mb-4" id="profile_card">
   <div class="card-header bg-transparent">
     <h3>Profile</h3>
   </div>
@@ -20,6 +20,13 @@
         </p>
       </div>
     </div>
+    {% if user.is_authenticated and data == user and change_pic == True %}
+    <form method="POST" enctype="multipart/form-data" class="pb-3">
+      {% csrf_token %}
+      {{ form.profile_pic }}
+      <input type="submit" class="btn btn-secondary rounded-pill px-3" value="Update Picture">
+    </form>
+    {% endif %}
     <div class="row rounded-xl">
       <div class="col">
         <span class="text-white-50">Tweets</span>
