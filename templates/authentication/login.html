@@ -2,7 +2,7 @@
 {% extends 'authentication/auth_base.html' %}
 {% load static %}
 {% block auth_block %}
-<div class="modal-dialog">
+<div class="modal-dialog modal_auth">
   <div class="modal-content bg-profile">
     <div class="modal-body text-center shadow-lg">
       <div class="text-right">
@@ -19,6 +19,13 @@
         <br>
         {{ form.password }}
         <br>
+        {% if messages %}
+        <div class="alert alert-danger text-left" role="alert">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </div>
+        {% endif %}
         <input type="submit" class="btn color-btn btn-lg btn-block rounded-pill" value="Log in" />
         <small>New around here? <a href="{% url 'signup' %}">Sign up</a></small>
       </form>

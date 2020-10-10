@@ -24,6 +24,10 @@ body {
   text-align: center;
 }
 
+.modal_auth form input:not(.btn) {
+  background-color: var(--bg-tweet);
+}
+
 .twitter-bg {
   background: var(--bg-dark)
     url("http://127.0.0.1:8000/static/images/twitter_bg.jpg") no-repeat center
@@ -38,6 +42,12 @@ body {
 .twitter-bg > div,
 .auth_buttons > div {
   width: 80%;
+}
+
+.alert-danger {
+  border: 1px solid #68121b;
+  background-color: #60131c !important;
+  color: #e1959d;
 }
 
 .alert-twitter {

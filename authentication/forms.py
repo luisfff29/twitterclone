@@ -2,7 +2,7 @@ from django import forms
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput(
+    username = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'class': 'form-control bg-tweet text-white border-0',
             'placeholder': 'Username'
@@ -18,7 +18,7 @@ class LoginForm(forms.Form):
 
 
 class SignupForm(forms.Form):
-    full_name = forms.CharField(widget=forms.TextInput(
+    full_name = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'class': 'form-control bg-tweet text-white border-0',
             'placeholder': 'Full Name'
@@ -31,7 +31,7 @@ class SignupForm(forms.Form):
             'type': 'email'
         }
     ))
-    username = forms.CharField(widget=forms.TextInput(
+    username = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'class': 'form-control bg-tweet text-white border-0',
             'placeholder': 'Username'
