@@ -3,13 +3,13 @@
 {% load static %}
 
 {% block profile_card_block %}
-<div class="col-md-3">
+<div class="col-lg-3 col-md-6">
   {% include 'profile_card.html' with data=user %}
 </div>
 {% endblock %}
 
 {% block body_block %}
-<div class="col-md-6 order-2">
+<div class="col-lg-6 col-md-12 order-2">
   <h3>All Tweets</h3>
   <div>
     {% for tweet in all_tweets %}
@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block follow_block %}
-<div class="col-md-3 order-md-3">
+<div class="col-lg-3 col-md-6 order-lg-3">
   {% if who_to_follow|length > 1 %}
   {% include 'follow_card.html' %}
   {% else %}

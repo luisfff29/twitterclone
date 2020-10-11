@@ -27,7 +27,13 @@
       <input type="submit" class="btn btn-secondary rounded-pill px-3" value="Update Picture">
     </form>
     {% endif %}
-    <div class="row rounded-xl">
+    <div class="row pb-3">
+      <div class="col">
+        <span class="text-white-50">Email</span>
+        <span class="d-block">{{ data.email }}</span>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <span class="text-white-50">Tweets</span>
         <span class="d-block h4 font-weight-bolder">{{ tweets|length }}</span>

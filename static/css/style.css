@@ -103,6 +103,15 @@ body {
 
 /*** General ***/
 
+a {
+  color: lightgray;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-button);
+}
+
 .color-btn {
   background-color: var(--color-button);
   color: white;

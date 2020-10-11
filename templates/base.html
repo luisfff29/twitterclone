@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'notification' %}">Notifications <span
-                class="badge badge-dark">{{ num_notif|default:0 }}</span></a>
+                class="badge {% if num_notif != 0 %}color-btn{% endif %} ">{{ num_notif|default:0 }}</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'profile' user.username %}">Profile</a>
@@ -51,7 +51,7 @@
     </nav>
     {% else %}
     <div class="alert alert-twitter row" role="alert">
-      <div class="col-md bg-transparent">Twitter clone is Better when you are Logged In</div>
+      <div class="col-md bg-transparent">Twitter clone is better when you sign in</div>
       <div class="col-md-4 bg-transparent text-right"><a href="{% url 'auth_home' %}"
           class="btn color-outline-btn rounded-pill">Log in
           or Sign up</a>
