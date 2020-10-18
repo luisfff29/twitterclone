@@ -101,6 +101,16 @@ body {
   border: solid #5c7084;
 }
 
+/*** Error page ***/
+
+.error-bg {
+  background: var(--bg-dark)
+    url("http://127.0.0.1:8000/static/images/error_bg.png") no-repeat center
+    center fixed;
+  background-size: cover;
+  font-family: "Dosis", sans-serif;
+}
+
 /*** General ***/
 
 a {

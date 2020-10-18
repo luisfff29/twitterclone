@@ -10,6 +10,8 @@ from django.views.generic import View
 
 class AuthHomeView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('homepage'))
         return render(request, 'authentication/auth_home.html')
 
 
@@ -74,3 +76,11 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('auth_home'))
+
+
+def handler404(request, exception):
+    return render(request, 'error_pages/404.html', status=404)
+
+
+def handler500(request):
+    return render(request, 'error_pages/500.html', status=500)

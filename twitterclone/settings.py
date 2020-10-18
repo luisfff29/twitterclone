@@ -24,9 +24,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '!3@a7rzwg+ujmc$+s_uk0f!iv^^0tir@3eb&iho=(uu_0i506)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -123,17 +123,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-MEDIA_URL = '/images/'
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_ROOT = '/static/'
-
+MEDIA_URL = '/static/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 AUTH_USER_MODEL = 'twitteruser.CustomUser'
-
 LOGIN_URL = '/login/'
-
 LOGIN_REDIRECT_URL = '/'
