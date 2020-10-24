@@ -29,12 +29,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['104.131.10.50']
+    # ALLOWED_HOSTS = ['104.131.10.50']
+    ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,10 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'twitteruser.apps.TwitteruserConfig',
-    'tweet.apps.TweetConfig',
-    'authentication.apps.AuthenticationConfig',
-    'notification.apps.NotificationConfig',
+    'twitteruser',
+    'tweet',
+    'authentication',
+    'notification',
 ]
 
 MIDDLEWARE = [
@@ -131,14 +132,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/images/'
 
-if DEBUG:
-    MEDIA_URL = '/images/'
-else:
-    MEDIA_URL = '/static/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STATICFILES_DIRS = [os.path.join(
+    BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/images')
 
 AUTH_USER_MODEL = 'twitteruser.CustomUser'
 LOGIN_URL = '/login/'
