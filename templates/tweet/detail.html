@@ -24,7 +24,7 @@
   </form>
   <div class="comments">
     {% for comment in comments %}
-    {% include "tweet_card.html" with data=comment no_comments=True %}
+    {% include "tweet_card.html" with data=comment show_comments=True %}
     {% endfor %}
   </div>
 </div>

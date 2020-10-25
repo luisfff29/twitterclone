@@ -8,10 +8,13 @@
         <a href="{% url 'profile' data.user.username %}">@{{ data.user.username }}</a>
       </span>
     </div>
+
     <div class="d-lg-none ml-3 font-smaller">
-      <a href="{% url 'tweet' data.id %}">{{ data.date|time:"H:i" }} {{ data.date|date:"D, m.d.y" }}</a>
+      <a href="{% if not show_comments %}{% url 'tweet' data.id %}{% endif %}">{{ data.date|time:"H:i" }}
+        {{ data.date|date:"D, m.d.y" }}</a>
     </div>
-    {% if data.user.username == user.username %}
+
+    {% if data.user.username == user.username and not show_comments %}
     <div class="ml-auto">
       <span type="button" data-toggle="modal" data-target="#deleteTweet">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
@@ -23,14 +26,14 @@
         </svg>
       </span>
     </div>
-
     {% endif %}
+
   </div>
   <div class="card-body">
     <p class="card-text text-white-50">{{ data.body }}</p>
   </div>
   <div class="d-flex font-smaller">
-    {% if not no_comments %}
+    {% if not show_comments %}
     <div class="d-flex">
       <div class="mr-2">
         {% if user in likes %}
@@ -74,7 +77,8 @@
     </div>
     {% endif %}
     <div class="ml-auto d-none d-lg-block">
-      <a href="{% url 'tweet' data.id %}">{{ data.date|time:"H:i" }} {{ data.date|date:"D, m.d.y" }}</a>
+      <a href="{% if not show_comments %}{% url 'tweet' data.id %}{% endif %}">{{ data.date|time:"H:i" }}
+        {{ data.date|date:"D, m.d.y" }}</a>
     </div>
   </div>
 </div>
