@@ -34,7 +34,7 @@ DEBUG = False
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['167.71.247.48']
+    ALLOWED_HOSTS = ['django-tweetclone.xyz', '.django-tweetclone.xyz']
 
 
 # Application definition
